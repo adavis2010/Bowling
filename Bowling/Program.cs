@@ -5,7 +5,7 @@ namespace Bowling {
     class Program {
         //--Group in Class Project Bowling 2/19-- slide 216
              // create new method for just 1 game..will call main method only once
-        static void Bowl1Game(Random rnd) {
+        static int Bowl1Game(Random rnd) {
             //add collection from generic list to generate score for one game
             var game = new List<int>(10);
             // add for loop from previous exercise
@@ -20,15 +20,21 @@ namespace Bowling {
             }
 
             Console.WriteLine($"Bowling score is {total}");
+            // add return statement since we took void out of method
+                return total;
+
 
         }
         static void Main(string[] args) {
             
             //get random number generated
             var rnd = new Random();
+            var series = 0;
             for (var idx = 0; idx < 3; idx++) {
 
-                Bowl1Game(rnd);
+               var score = Bowl1Game(rnd);
+                //adding the 3 games as a series
+                series += score;
             }
             //create generic list
             var game = new List<int>(10);
@@ -43,7 +49,9 @@ namespace Bowling {
             var total = 0;
             foreach (var score in game) {
                 total += score;
-            } 
+            }
+
+            Console.WriteLine($"Series score is {series}");
             // If I keep running this print statement the score numbers will change
 
                // Console.WriteLine($"Bowling score is {total}");
@@ -51,7 +59,7 @@ namespace Bowling {
 
             /* --Group in Class Project Bowling 2/19--
              create generic collection of integers
-            use forloop to make it run 10 times to get random numbers
+            use for loop to make it run 10 times to get random numbers
             use foreach loop to add up frame score and total game score*/
 
             
